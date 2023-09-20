@@ -1,2 +1,1 @@
-# printf
-The first ALX team project
+The ALX printf project I've been dreading for ages.
