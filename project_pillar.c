@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * spot - spots appropriate function for each specifier
- * @c: specifier to spot a function for
- * Return: correct funtion for the specifier if it's present....else NULL
+ * spec - specifier choser
+ * @c: represensts specifier character
+ * Return: function to match argument specifier
 */
 int (*spec(char c))(va_list args, int flags)
 {

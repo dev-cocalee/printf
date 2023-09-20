@@ -17,7 +17,7 @@
 /**
  * struct specs -carries this whole project fr
  * @format: format string
- * @func: pointer to a function
+ * @function: pointer to a function
 */
 typedef struct specs
 {
