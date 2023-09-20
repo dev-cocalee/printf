@@ -9,35 +9,35 @@
  */
 int print_int(va_list args, int flags)
 {
-long int num = va_arg(args, long int);
+long int number = va_arg(args, long int);
 int count = 0, temp, len, i;
-char *buffer;
+char *buf;
 
-if (num < 0)
+if (number < 0)
 {write(1, "-", 1), count++;
-num = -num; }
+number = -number; }
 
-temp = num, len = 0;
+temp = number, len = 0;
 
-temp = flags, flags = num, temp = num;
+temp = flags, flags = number, temp = number;
 
-if (num == 0)
+if (number == 0)
 write(1, "0", 1), count++;
 
 while (temp > 0)
 {temp /= 10, len++; }
 
-buffer = (char *)malloc(len);
-if (buffer == NULL)
+buf = (char *)malloc(len);
+if (buf == NULL)
 return (0);
 
 for (i = len - 1; i >= 0; i--)
-{buffer[i] = num % 10 + '0';
-num /= 10; }
-write(1, buffer, len);
+{buf[i] = number % 10 + '0';
+number /= 10; }
+write(1, buf, len);
 count += len;
 
-free(buffer);
+free(buf);
 return (count);
 }
 
@@ -50,34 +50,34 @@ return (count);
 */
 int print_uint(va_list args, int flags)
 {
-unsigned int num = va_arg(args, unsigned int);
+unsigned int number = va_arg(args, unsigned int);
 int count = 0, index = 0, i;
-char *buffer = malloc(32); /*Maximum 32-bit decimal representation*/
+char *buf = malloc(32); /*Maximum 32-bit decimal representation*/
 
-if (buffer == NULL)
+if (buf == NULL)
 return (0);
 
-if (num == 0)
+if (number == 0)
 {
 write(1, "0", 1);
 return (1);
 }
 
-while (num > 0)
+while (number > 0)
 {
-buffer[index++] = num % 10 + '0';
-num /= 10;
+buf[index++] = number % 10 + '0';
+number /= 10;
 }
 if (flags == 0)
 i = 1;
 
 for (i = index - 1; i >= 0; i--)
 {
-write(1, &buffer[i], 1);
+write(1, &buf[i], 1);
 count++;
 }
 
-free(buffer);
+free(buf);
 return (count);
 }
 
@@ -91,34 +91,34 @@ return (count);
  */
 int print_octal(va_list args, int flags)
 {
-unsigned int num = va_arg(args, unsigned int);
+unsigned int number = va_arg(args, unsigned int);
 int count = 0, index = 0, i;
-char *buffer = malloc(32);
-if (buffer == NULL)
+char *buf = malloc(32);
+if (buf == NULL)
 return (0);
 
 if (flags & FLAG_HASH)
 write(1, "0", 1);
 
-if (num == 0)
+if (number == 0)
 {
 write(1, "0", 1);
 return (1);
 }
 
-while (num > 0)
+while (number > 0)
 {
-buffer[index++] = num % 8 + '0';
-num /= 8;
+buf[index++] = number % 8 + '0';
+number /= 8;
 }
 
 for (i = index - 1; i >= 0; i--)
 {
-write(1, &buffer[i], 1);
+write(1, &buf[i], 1);
 count++;
 }
 
-free(buffer);
+free(buf);
 return (count);
 }
 
@@ -131,36 +131,36 @@ return (count);
  */
 int print_hex(va_list args, int flags)
 {
-unsigned int num = va_arg(args, unsigned int);
+unsigned int number = va_arg(args, unsigned int);
 int count = 0, index = 0, i = 0;
 char hexDigits[] = "0123456789abcdef";
-char *buffer = malloc(32);
+char *buf = malloc(32);
 
-if (buffer == NULL)
+if (buf == NULL)
 return (0);
 
 if (flags & FLAG_HASH)
 write(1, "0x", 2);
 
-if (num == 0)
+if (number == 0)
 {
 write(1, "0", 1);
 return (1);
 }
 
-while (num > 0)
+while (number > 0)
 {
-buffer[index++] = hexDigits[num % 16];
-num /= 16;
+buf[index++] = hexDigits[number % 16];
+number /= 16;
 }
 
 for (i = index - 1; i >= 0; i--)
 {
-write(1, &buffer[i], 1);
+write(1, &buf[i], 1);
 count++;
 }
 
-free(buffer);
+free(buf);
 return (count);
 }
 
@@ -173,35 +173,35 @@ return (count);
  */
 int print_HEX(va_list args, int flags)
 {
-unsigned int num = va_arg(args, unsigned int);
+unsigned int number = va_arg(args, unsigned int);
 int count = 0, index = 0, i;
 char hexDigits[] = "0123456789ABCDEF";
-char *buffer = malloc(32);
+char *buf = malloc(32);
 
-if (buffer == NULL)
+if (buf == NULL)
 return (0);
 
 if (flags & FLAG_HASH)
 write(1, "0X", 2);
 
-if (num == 0)
+if (number == 0)
 {
 write(1, "0", 1);
 return (1);
 }
 
-while (num > 0)
+while (number > 0)
 {
-buffer[index++] = hexDigits[num % 16];
-num /= 16;
+buf[index++] = hexDigits[number % 16];
+number /= 16;
 }
 
 for (i = index - 1; i >= 0; i--)
 {
-write(1, &buffer[i], 1);
+write(1, &buf[i], 1);
 count++;
 }
 
-free(buffer);
+free(buf);
 return (count);
 }

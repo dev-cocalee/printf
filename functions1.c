@@ -99,7 +99,7 @@ int handle_green_flags(const char *format, int start, int end)
 int flags, i = start;
 i = end, i = start;
 
-flags = get_flags(format, &i);
+flags = get_red_flags(format, &i);
 
 /*Combine the flags using bitwise OR*/
 if (flags & FLAG_HASH)

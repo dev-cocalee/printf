@@ -121,7 +121,7 @@ return (1);
 */
 int print_string(va_list args, int flags)
 {
-int len = 0, j;
+int length = 0, j;
 char *str = va_arg(args, char*);
 if (str == NULL)
 {
@@ -129,16 +129,16 @@ write(1, "(null)", 6);
 return (6);
 }
 if (flags == 0)
-j = len;
+j = length;
 /*
  *the whole existence of j is to trick the compiler into believing
  *flags isn't an unused variable. I haven't figured out a way to implement
  *the flags and precision yet....I'll come back to this code later
  *, I promise
  */
-while (str[len])
-len++;
-write(1, str, len);
-len += j;
-return (len - j);
+while (str[length])
+length++;
+write(1, str, length);
+length += j;
+return (length - j);
 }

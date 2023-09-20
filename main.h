@@ -15,37 +15,38 @@
 #define FLAG_ZERO 16
 
 /**
- * struct specs - structure of the whole printf
- * @format: variadic arguement
- * @func: function pointer
+ * struct specs -carries this whole project fr
+ * @format: format string
+ * @func: pointer to a function
 */
 typedef struct specs
 {
 char format;
-int (*func)(va_list, int flags);
-} conversion_t;
+int (*function)(va_list, int flags);
+} converter_t;
 
-extern conversion_t conversion[];
+extern converter_t converter[];
 
-int (*spot(char c))(va_list args, int flags);
+
+int (*spec(char c))(va_list args, int flags);
+int print_S(va_list args, int flags);
+int print_hex_char(char c);
+int print_pointer(va_list args, int flags);
+int print_reverse(va_list args, int flags);
+int print_rot13(va_list args, int flags);
 int _printf(const char *format, ...);
 int print_char(va_list args, int flags);
+int print_HEX(va_list args, int flags);
+int print_uint(va_list args, int flags);
 int print_string(va_list args, int flags);
 int print_percent(va_list args, int flags);
 int print_int(va_list args, int flags);
 int print_binary(va_list args, int flags);
 int print_hex(va_list args, int flags);
 int print_octal(va_list args, int flags);
-int print_HEX(va_list args, int flags);
-int print_uint(va_list args, int flags);
-int print_S(va_list args, int flags);
-int print_hex_char(char c);
-int print_pointer(va_list args, int flags);
-int print_reverse(va_list args, int flags);
-int print_rot13(va_list args, int flags);
 
 int print_hex_size_t(uintptr_t value);
-int handle_flags(const char *format, int start, int end);
+int handle_green_flags(const char *format, int start, int end);
 int is_flag(char c);
 
 char *_strcpy(char *destination, const char *source);

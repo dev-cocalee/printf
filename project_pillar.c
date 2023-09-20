@@ -5,10 +5,10 @@
  * @c: specifier to spot a function for
  * Return: correct funtion for the specifier if it's present....else NULL
 */
-int (*spot(char c))(va_list args, int flags)
+int (*spec(char c))(va_list args, int flags)
 {
 int i = 0;
-conversion_t conversion[] = {
+converter_t converter[] = {
 {'c', print_char},
 {'s', print_string},
 {'%', print_percent},
@@ -25,10 +25,10 @@ conversion_t conversion[] = {
 {'r', print_reverse},
 {'\0', NULL}};
 
-for (i = 0; conversion[i].format != '\0'; i++)
+for (i = 0; converter[i].format != '\0'; i++)
 {
-if (conversion[i].format == c)
-return (conversion[i].func); }
+if (converter[i].format == c)
+return (converter[i].function); }
 
 return (0);
 }
